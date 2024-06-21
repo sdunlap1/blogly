@@ -3,11 +3,13 @@
 {% block title %}Users{% endblock %}
 
 {% block content %}
+<div style="margin-top: 50px;">
     <h1>Users</h1>
     <ul>
         {% for user in users %}
-            <li><a href="{{ url_for('show_user', user_id=user.id) }}">{{ user.get_full_name() }}</a></li>
+        <li><a href="{{ url_for('show_user', user_id=user.id) }}">{{ user.get_full_name() }}</a></li>
         {% endfor %}
     </ul>
     <a href="{{ url_for('add_user') }}" class="btn btn-primary">Add New User</a>
+</div>
 {% endblock %}

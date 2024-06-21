@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Tags{% endblock %}
+
+{% block content %}
+
+<h1>Tags</h1>
+
+<ul>
+  {% for tag in tags %}
+  <li><a href="/tags/{{ tag.id }}">{{ tag.name }}</a></li>
+  {% endfor %}
+</ul>
+
+<div class="form-group mt-3">
+<a class="btn btn-primary" href="{{ url_for('add_tag', next=request.args.get('next')) }}">Add Tag</a>
+{% if next %}
+  <a class="btn btn-secondary" href="{{ next }}">Return to Post</a>
+  {% endif %}
+</div>
+
+{% endblock %}

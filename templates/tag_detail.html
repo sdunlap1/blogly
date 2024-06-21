@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ tag.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ tag.name }}</h1>
+    <a href="{{ url_for('edit_tag', tag_id=tag.id) }}" class="btn btn-secondary">Edit</a>
+    <form method="POST" action="{{ url_for('delete_tag', tag_id=tag.id) }}" style="display:inline;">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    <h2>Posts with this tag:</h2>
+    <ul>
+        {% for post in tag.posts %}
+            <li><a href="{{ url_for('show_post', post_id=post.id) }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
